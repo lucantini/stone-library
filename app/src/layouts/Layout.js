@@ -1,15 +1,17 @@
-import React, { PropTypes } from 'react';
+// @flow
 
+import React from 'react';
+import logo from '../assets/images/Logo_MA_Blocada_Colorida.png';
 
-const Layout = props => (
+type Props = {
+	children: any,
+}
+
+const Layout = (props: Props) => (
 	<div>
+		<img src={logo} alt="logo mongeral aegon" />
 		{props.children}
 	</div>
 );
-
-Layout.propTypes = {
-	children: PropTypes.node,
-};
-
 
 export default Layout;

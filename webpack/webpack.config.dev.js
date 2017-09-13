@@ -1,7 +1,9 @@
 var config = require('./webpack.config.default.js'),
 	path = require('path'),
 	webpack = require('webpack'),
-	project_path = path.join(__dirname, '../app');
+	project_path = path.join(__dirname, '../app'),
+	autoprefixer = require('autoprefixer'),
+	mqpacker = require("css-mqpacker");
 
 
 config.devServer = {
@@ -17,26 +19,52 @@ config.entry = [
 
 config.plugins = config.plugins.concat([
 	new webpack.HotModuleReplacementPlugin(),
-	new webpack.NoErrorsPlugin(),
 	new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify('development') })
 ]);
 
-config.module.loaders.unshift({
+config.module.rules.unshift({
 	test: /\.styl/,
-	loaders: ['style',
-		'css?sourceMap&modules&importLoaders=1&localIdentName=[local]',
-		'postcss',
-		'resolve-url',
-		'stylus?sourceMap']
+	use: [
+		{ loader: 'style-loader' },
+		{
+			loader: 'css-loader',
+			options: {
+				sourceMap: true,
+				modules: true,
+				importLoaders: 1,
+				localIdentName: '[local]',
+			}
+		},
+		{
+			loader: 'postcss-loader',
+			options: {
+				plugins: [
+					autoprefixer({ browsers: ['last 2 versions'] }),
+					mqpacker(),
+				],
+			},
+		},
+		{
+			loader: 'resolve-url-loader',
+		},
+		{
+			loader: 'stylus-loader',
+			options: {
+				sourceMap: true,
+			}
+		}
+	],
 }, {
 	test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-	loader: 'url',
+	use: [{
+		loader: 'url-loader',
+		options: {
+			name: 'fonts/[name].[ext]'
+		}
+	}],
 	include: [
 		path.join(project_path, 'src/assets/fonts/')
 	],
-	query: {
-		name: 'fonts/[name].[ext]',
-	}
 });
 
 config.devtool = 'source-map';

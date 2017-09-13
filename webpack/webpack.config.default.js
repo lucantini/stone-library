@@ -18,67 +18,96 @@ const config = {
 		publicPath: '/'
 	},
 	resolve: {
-		root: project_path,
+		modules: [
+			project_path,
+			"node_modules"
+		],
 		alias: {
 			images: 'src/assets/images'
 		}
 	},
 	plugins: [
 		new CleanWebpackPlugin(['public'], { root: path.resolve(__dirname, '..'), verbose: true }),
-		new webpack.optimize.OccurenceOrderPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, '../views/index.ejs'),
 			inject: 'body',
 			filename: 'index.ejs'
 		}),
-		new webpack.optimize.DedupePlugin(),
 		new FlowStatusWebpackPlugin({
 			restartFlow: false,
 			failOnError: true
 		})
 	],
 	module: {
-		preLoaders: [
+		rules: [
 			{
+				enforce: 'pre',
 				test: /\.js$/,
-				loaders: ['eslint'],
+				loader: 'eslint-loader',
 				// define an exclude so we check just the files we need
 				exclude: [/(node_modules)/, /\*spec.js/]
-			}
-		],
-		loaders: [
+			},
 			{
 				test: /\.js$/,
 				exclude: [
 					/(node_modules)/, /\*spec.js/
 				],
-				loaders: ['babel']
+				loader: 'babel-loader',
 			}, {
 				test: /\.css$/,
-				loaders: ['style-loader', 'css?sourceMap&modules&importLoaders=1&localIdentName=[local]', 'resolve-url']
+				use: [
+					{
+						loader: 'style-loader',
+					},
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+							modules: true,
+							importLoaders: 1,
+							localIdentName: '[local]',
+						}
+					},
+					{
+						loader: 'resolve-url-loader',
+					},
+				],
 			}, {
 				//IMAGE LOADER
 				test: /\.(jpe?g|png|gif|svg)$/i,
-				loader: 'file',
+				use: [
+					{
+						loader: 'file-loader',
+						options: {
+							name: 'images/[name].[ext]',
+						}
+					},
+					{
+						loader: 'url-loader',
+					}
+				],
 				exclude: [
 					path.join(project_path, 'src/assets/fonts/')
 				],
-				query: {
-					name: 'images/[name].[ext]'
-				}
 			}, {
 				// HTML LOADER
 				test: /\.html$/,
-				loader: 'html-loader'
+				use: [
+					{ loader: 'html-loader' }
+				],
 			},
 			{
 				// HTML LOADER
 				test: /\.ejs$/,
-				loader: 'html-loader'
+				use: [
+					{ loader: 'html-loader' }
+				],
 			}
 		]
 	},
-	postcss: [autoprefixer({ browsers: ['last 2 versions'] }), mqpacker()],
 };
+
+require.extensions['.png'] = function () {};
+require.extensions['.jpg'] = function () {};
 
 module.exports = config;
