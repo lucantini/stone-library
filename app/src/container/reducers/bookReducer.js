@@ -1,13 +1,13 @@
 //	@flow
 
 const State = {
-	title: 'Teste GG',
+	books: [],
 };
 
 export default function (state: Object = State, action: Object) {
 	switch (action.type) {
-		case 'CHANGE_TITLE':
-			return { ...state, title: action.title };
+		case 'GET_BOOKS_FULFILLED':
+			return { ...state, books: action.books };
 		default:
 			return state;
 	}

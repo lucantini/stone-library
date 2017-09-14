@@ -1,0 +1,21 @@
+@import '../../assets/sass/generals/variables';
+@import '../../../../node_modules/jeet/scss/index';
+
+.shelf {
+	display: inline-block;
+	padding: $space-default/3;
+	text-align: center;
+	border: 1px solid $color-dark-grey;
+	border-radius: 2px;
+}
+
+.content {
+
+}
+
+.cover {
+	float: left;
+	.photo {
+		height: 100px;
+	}
+}

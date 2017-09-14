@@ -1,0 +1,180 @@
+body {
+	background-color: $color-body-background;
+	color: $color-main-text;
+	margin: 0;
+	font-size: 16px;
+	font-family: $font-default, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
+.container {
+	display: block;
+	max-width: 100%;
+	padding: 0 ($space-default / 2);
+}
+
+.app-container {
+	@extend .container;
+	margin-top: 30px;
+	transition: all .3s;
+	@media ($tablet-size) {
+		padding: 0 $space-default;
+	}
+	&--no-margin{
+		@extend .app-container;
+		margin-top: 0;
+	}
+	&--fullwidth {
+		@extend .app-container;
+		@media ($tablet-size) {
+			padding: 0;
+			margin-top: 0;
+		}
+	}
+}
+
+.main-container--menu-open {
+	&.modal-opened {
+		overflow: hidden;
+		@media ($tablet-size) {
+			overflow: visible;
+		}
+    	max-height: 100vh;
+	}
+	.app-container, .tabbar{
+		transform: translate($sidebar-width,0);
+	}
+}
+.align-left {
+	text-align: left;
+}
+.commom-list li {
+	list-style: disc;
+    margin-left: 20px;
+}
+.main-container--menu-close {
+	&.modal-opened {
+		overflow: hidden;
+		@media ($tablet-size) {
+			overflow: visible;
+		}
+    	max-height: 100vh;
+	}
+	.app-container, .tabbar{
+		transform: translate(0,0);
+	}
+}
+
+
+.content {
+	padding: 30px 15px;
+	margin-bottom: 30px;
+	background: $color-white;
+	&--no-padding {
+		background: #fff;
+		padding: $space-default 0;
+		margin-bottom: 30px;
+	}
+}
+
+.introduction-text {
+	margin-left: 1.125%;
+}
+
+strong {
+	font-weight: normal;
+	font-family: $font-strong, sans-serif;
+}
+
+h1:empty, h2:empty, h3:empty {
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	font-size: 1.5rem;
+	font-family: 'open_sanssemibold', sans-serif;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.title-default--center {
+	text-align: center;
+}
+
+input, textarea, button, select {
+	outline: none;
+}
+
+button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: inherit;
+	color: inherit;
+	text-transform: none;
+}
+
+.no-results {
+	padding: 15px 0;
+	margin-top: 30px;
+	text-align: center;
+}
+
+i {
+	font-style: normal;
+}
+ul,li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.title {
+	font-size: 22px;
+}
+
+.static-button {
+	text-align: right;
+	margin: {
+		top: 20px;
+		bottom: 40px;
+	}
+
+	.button-default {
+		&:before {
+			content: '\f019';
+			position: relative;
+			right: 4px;
+			bottom: 2px;
+		}
+	}
+}
+
+@media ($tablet-size) {
+	.bg-header {
+		width: 100%;
+	}
+}
+
+.border-color-bluelight {
+	border-color: #3bc7ef;
+}
+.border-color-yellow {
+	border-color: #fdd353;
+}
+.border-color-blueswin {
+	border-color: #3bc8bc;
+}
+.align-right{
+	text-align: right;
+}

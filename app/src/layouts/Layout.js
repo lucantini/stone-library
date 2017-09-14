@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import logo from '../assets/images/Logo_MA_Blocada_Colorida.png';
+import Menu from '../components/Menu/Menu';
 
 type Props = {
 	children: any,
@@ -9,7 +9,7 @@ type Props = {
 
 const Layout = (props: Props) => (
 	<div>
-		<img src={logo} alt="logo mongeral aegon" />
+		<Menu />
 		{props.children}
 	</div>
 );

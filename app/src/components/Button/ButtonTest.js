@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, render, shallow } from 'enzyme';
-import FirstComponent from './FirstComponent';
-import style from './FirstComponent.styl';
+import FirstComponent from './Button';
+import style from './button.scss';
 
 describe('<FirstComponent />', () => {
 	it('should render one exampleParagraph', () => {

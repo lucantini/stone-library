@@ -11,8 +11,8 @@ import config from '../webpack/webpack.config.dev';
 import renderRouter from './renderRouter';
 
 
-const host = config.devServer.host,
-	port = config.devServer.port,
+const host = 'localhost',
+	port = '3333',
 	app = express(),
 	isDevelopment = process.env.NODE_ENV !== 'production',
 	isProduction = process.env.NODE_ENV === 'production';
