@@ -13,6 +13,8 @@
 		"jasmine": true
 	},
 	"rules": {
+		"no-plusplus": 0,
+		"jsx-a11y/anchor-has-content": 0,
 		"react/sort-comp": 0,
 		"react/jsx-indent": [
 			"error",

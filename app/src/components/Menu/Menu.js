@@ -7,10 +7,14 @@ import './menu.scss';
 
 const Menu = () => (
 	<div className="header">
-		<Link to="/">
-			<img className="header__logo" src={logo} alt="Logo Stone" />
-		</Link>
-		<Link to="cart" className="cart-icon">cart</Link>
+		<div className="content">
+			<Link to="/">
+				<img className="header__logo" src={logo} alt="Logo Stone" />
+			</Link>
+			<Link to="cart" className="cart-button">
+				<span className="icon-cart" /><span className="cart-name" />
+			</Link>
+		</div>
 	</div>
 );
 

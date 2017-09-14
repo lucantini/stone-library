@@ -22,7 +22,7 @@ class Home extends Component {
 
 	render() {
 		return (
-			<section id="home" className="app-container">
+			<section id="home" className="app-container--home">
 				{this.renderShelves()}
 			</section>
 		);

@@ -1,0 +1,44 @@
+@import '../../assets/sass/generals/variables';
+@import '../../assets/sass/generals/icons';
+@import '../../assets/sass/generals/placeholders';
+
+.delete {
+	font-size: 30px;
+	display: inline-block;
+	&:before {
+		@extend .icon-delete;
+	}
+}
+
+.cart-header {
+	display: none;
+	margin-top: $space-default;
+	.cart-header__title {
+		text-align: center;
+		display: inline-block;
+		font-weight: bold;
+		font-size: 22px;
+		&--medium {
+			@extend .cart-header__title;
+			@extend %medium;
+		}
+		&--small {
+			@extend .cart-header__title;
+			@extend %small;
+		}
+	}
+	@media ($desktop-size) {
+		display: block;
+	}
+}
+
+.cart__total {
+	float: right;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bold;
+	margin-top: $space-default/2;
+	@media ($desktop-size) {
+		width: 20%;
+	}
+}

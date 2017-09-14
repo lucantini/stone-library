@@ -1,3 +1,21 @@
+@import 'variables';
+
+@font-face {
+	font-family: 'icons';
+	src: url('../../fonts/fontawesome.woff2') format('woff2'),
+	url('../../fonts/fontawesome.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'icons-webfont';
+	src: url('../../fonts/fontawesome-webfont.woff2') format('woff2'),
+	url('../../fonts/fontawesome-webfont.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
 	background-color: $color-body-background;
 	color: $color-main-text;
@@ -17,8 +35,10 @@ body {
 
 .app-container {
 	@extend .container;
-	margin-top: 30px;
 	transition: all .3s;
+	max-width: $content-width;
+	margin: 0 auto;
+	margin-top: $space-default;
 	@media ($tablet-size) {
 		padding: 0 $space-default;
 	}
@@ -32,6 +52,13 @@ body {
 			padding: 0;
 			margin-top: 0;
 		}
+	}
+	&--home {
+		@extend .app-container;
+		display: flex;
+		justify-content: space-around;
+		align-items: stretch;
+		flex-wrap: wrap;
 	}
 }
 
@@ -69,14 +96,9 @@ body {
 
 
 .content {
-	padding: 30px 15px;
-	margin-bottom: 30px;
-	background: $color-white;
-	&--no-padding {
-		background: #fff;
-		padding: $space-default 0;
-		margin-bottom: 30px;
-	}
+	max-width: $content-width;
+	margin: 0 auto;
+	position: relative;
 }
 
 .introduction-text {

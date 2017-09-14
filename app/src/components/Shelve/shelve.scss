@@ -1,21 +1,71 @@
 @import '../../assets/sass/generals/variables';
+@import '../../assets/sass/generals/icons';
 @import '../../../../node_modules/jeet/scss/index';
 
 .shelf {
-	display: inline-block;
-	padding: $space-default/3;
+	display: flex;
+	flex-direction: column;
 	text-align: center;
-	border: 1px solid $color-dark-grey;
+	border: 1px solid $color-grey;
+	border-radius: 2px;
+	justify-content: space-between;
+	margin-bottom: $space-default;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	&:hover {
+		-webkit-box-shadow: 5px 5px 3px 0 rgba(166,166,166,0.3);
+		-moz-box-shadow: 5px 5px 3px 0 rgba(166,166,166,0.3);
+		box-shadow: 5px 5px 3px 0 rgba(166,166,166,0.3);
+	}
+	@media ($desktop-size) {
+		max-width: 320px;
+	}
+}
+
+main {
+	padding: 10px;
+}
+
+.title {
+	font-weight: bold;
+	padding: 10px 0;
+	border-bottom: 1px solid $color-grey;
+}
+
+.book {
+	padding: $space-default/2;
+	display: flex;
+	justify-content: space-between;
+	&__cover {
+		&__photo {
+			height: 150px;
+		}
+	}
+	&__description {
+		margin-left: 15px;
+		&__price {
+			display: block;
+			margin-top: $space-default;
+			font-weight: bold;
+		}
+	}
+}
+
+.add-button {
+	background-color: $color-green;
+	color: $color-white;
+	padding: 10px;
+	font-weight: bold;
+	width: 100%;
 	border-radius: 2px;
 }
 
-.content {
-
-}
-
-.cover {
-	float: left;
-	.photo {
-		height: 100px;
+.add-icon {
+	&:before {
+		@extend .icon-add;
 	}
+	margin-right: 5px;
 }

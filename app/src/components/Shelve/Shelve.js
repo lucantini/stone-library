@@ -1,54 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import currencyMask from '../../../core/helpers/masks/currencyMask';
 
-// import * as cartActions from '../../container/actions/cartActions';
+import Button from '../Button/Button';
+
+import * as cartActions from '../../container/actions/cartActions';
 
 import './shelve.scss';
 
 type Props = {
-	book: {
-		title: string,
-		photo: string,
-		description: string,
-		value: number
-	},
-	// cart: [],
-	// cartActions: Object,
+	book: {},
+	cartActions: Object,
 }
 
 class Shelve extends Component {
 	props: Props;
 	constructor(props) {
 		super(props);
-
 		this.state = {
-			planCode: '',
+			homem: 'macaco',
 		};
 	}
 
 	render() {
+		const { book } = this.props;
 		return (
-			<div className="shelf">
-				<p className="title">
-					{this.props.book.title}
-				</p>
-				<div className="content">
-					<div className="cover">
-						<img
-							className="photo"
-							src={this.props.book.photo}
-							alt={this.props.book.title}
-						/>
+			<article className="shelf">
+				<header className="title">
+					{book.title}
+				</header>
+				<main>
+					<div className="book">
+						<div className="book__cover">
+							<img
+								className="book__cover__photo"
+								src={book.photo}
+								alt={book.title}
+							/>
+						</div>
+						<p className="book__description">
+							{book.description}
+							<span className="book__description__price">
+								{currencyMask.mount(book.value)}
+							</span>
+						</p>
 					</div>
-					<p className="description">
-						{this.props.book.description}
-					</p>
-					<p className="price">
-						{this.props.book.value}
-					</p>
-				</div>
-			</div>
+				</main>
+				<footer>
+					<Button
+						onClick={() => this.props.cartActions.addBook(book)}
+						className="add-button"
+					>
+						<span className="add-icon" />Adicionar ao Carrinho
+					</Button>
+				</footer>
+			</article>
 		);
 	}
 }
@@ -59,7 +66,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		cartActions: bindActionCreators({}, dispatch),
+		cartActions: bindActionCreators(cartActions, dispatch),
 	};
 }
 

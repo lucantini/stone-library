@@ -1,19 +1,40 @@
 @import '../../assets/sass/generals/variables';
+@import '../../assets/sass/generals/icons';
 
 .header {
 	text-align: center;
-	background-color: #8b8b8b;
+	border-bottom: 1px solid #8b8b8b;
 	color: #fff;
 	height: 35px;
 	padding: $space-default/2;
-
 	&__logo {
 		height: 35px;
 	}
 }
 
-.cart-icon {
-	background-color: $color-white;
+.cart-button {
+	background-color: $color-green;
+	padding: 5px 10px;
+	border-radius: 2px;
 	display: inline-block;
-	float: right;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	position: absolute;
+	right: 0;
+	.icon-cart:before {
+		font-size: 20px;
+	}
+	.cart-name {
+		margin-left: 5px;
+		&:before {
+			content: '';
+			@media ($desktop-size) {
+				content: 'Carrinho';
+			}
+		}
+	}
 }
+

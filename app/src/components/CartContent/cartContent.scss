@@ -1,0 +1,39 @@
+@import '../../assets/sass/generals/variables';
+@import '../../assets/sass/generals/icons';
+@import '../../assets/sass/generals/placeholders';
+
+%cart-table {
+	margin: $space-default/2 0;
+	float: left;
+}
+
+.cart__content {
+	text-align: center;
+	&__title {
+		@extend %cart-table;
+		@extend %medium;
+	}
+	&__quantity {
+		@extend %cart-table;
+		@extend %small;
+	}
+	&__subtotal {
+		@extend %cart-table;
+		@extend %small;
+	}
+	&__action {
+		@extend %cart-table;
+		@extend %small;
+	}
+	&:after {
+		display: block;
+		content: '';
+		clear: both;
+	}
+}
+
+.icon-delete {
+	@extend .icon-delete;
+	color: $color-red;
+	font-size: 20px;
+}
