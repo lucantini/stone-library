@@ -29,14 +29,14 @@ config.module.loaders.unshift(
 		test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
 		loader: 'url',
 		include: [
-			path.join(project_path, 'src/assets/fonts/')
+			path.join(project_path, 'src/assets/fonts/'),
 		],
 		query: {
 			name: 'fonts/[name].[ext]',
 		},
 	},
 	{
-		//IMAGE LOADER
+		// IMAGE LOADER
 		test: /\.(jpe?g|png|gif|svg)$/i,
 		loader: 'url-loader',
 		exclude: [

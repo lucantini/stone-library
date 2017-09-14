@@ -44,6 +44,7 @@ All of my base dependencies are managed by NPM and are already in this package.j
 ```
 $ npm install
 ```
+(May require sudo)
 
 ## Development
 
@@ -53,22 +54,6 @@ Just run:
 ```
 $ npm run dev
 ```
-
-## Build
-
-To run the build process:
-
-```
-$ npm run build:dev
-```
-or
-```
-$ npm run build:prod
-```
-
-For production builds
-
-All the files will be at the build folder, at the root of the project.
 
 ## Tests
 

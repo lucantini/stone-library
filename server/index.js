@@ -41,8 +41,8 @@ if (isDevelopment) {
 			errorDetails: true,
 			warnings: true,
 			publicPath: false,
-			colors: true // color is life
-		}
+			colors: true, // color is life
+		},
 	}));
 	app.use(WebpackHotMiddleware(compiler));
 }

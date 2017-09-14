@@ -17,7 +17,7 @@ function renderRoute(req, res, next) {
 		}
 
 		if (!renderProps) {
-			return next(new Error('Missing render props'));
+			return '';
 		}
 
 		const components = renderProps.components;
