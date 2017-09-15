@@ -1,0 +1,53 @@
+@import '../../assets/sass/generals/variables';
+@import '../../assets/sass/generals/icons';
+
+.mini-cart {
+	display: none;
+	@media ($desktop-size) {
+		display: block;
+		position: fixed;
+		bottom: 0;
+		right: 80px;
+		border: 1px solid $color-grey;
+		border-bottom: none;
+		border-radius: 2px;
+		width: 230px;
+		-webkit-transition: 0.3s;
+		-moz-transition: 0.3s;
+		-ms-transition: 0.3s;
+		-o-transition: 0.3s;
+		transition: 0.3s;
+		&:hover {
+			-webkit-box-shadow: 5px 5px 3px 0 rgba(166,166,166,0.3);
+			-moz-box-shadow: 5px 5px 3px 0 rgba(166,166,166,0.3);
+			box-shadow: 5px 5px 3px 0 rgba(166,166,166,0.3);
+		}
+	}
+	&__title {
+		@extend .title;
+		text-align: center;
+		background-color: $color-green;
+		color: $color-white;
+		border-radius: 2px;
+	}
+	&__content {
+		padding: $space-default/3;
+		&__title {
+			display: inline-block;
+			margin-right: 30px;
+		}
+		&__quantity {
+			display: inline-block;
+			font-weight: bold;
+			float: right;
+		}
+	}
+	.icon-delete {
+		font-size: 15px;
+		display: inline-block;
+		float: right;
+		&:before {
+			@extend .icon-delete;
+		}
+	}
+}
