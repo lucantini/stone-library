@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './button.scss';
-
 type Props = {
 	isLoading?:boolean,
 	className?:string,

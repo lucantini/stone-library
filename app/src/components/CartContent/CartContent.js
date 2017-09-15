@@ -4,7 +4,7 @@ import currencyMask from '../../../core/helpers/masks/currencyMask';
 import './cartContent.scss';
 
 type Props = {
-	book: [],
+	book: {},
 	removeBook: () => {},
 };
 

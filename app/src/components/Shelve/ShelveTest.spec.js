@@ -4,6 +4,7 @@ import sinon from 'sinon';
 
 import Shelve from './Shelve';
 
+let wrapper;
 const props = {
 	book: {
 		id: 123,
@@ -17,9 +18,25 @@ const props = {
 	},
 };
 
+beforeEach('Shallow Shelbe', () => {
+	wrapper = shallow(<Shelve {...props} />);
+});
+
 describe('<Shelve />', () => {
 	it('Should have correct structure', () => {
-		const wrapper = shallow(<Shelve {...props} />);
-		console.log(wrapper);
+		expect(wrapper.find('.shelf').length).to.eql(1);
+		expect(wrapper.find('header').length).to.eql(1);
+		expect(wrapper.find('.title').length).to.eql(1);
+		expect(wrapper.find('.add-icon').length).to.eql(1);
+	});
+
+	it('Should have correct content', () => {
+		expect(wrapper.find('header')).text().to.eql('A Game of Thrones');
+		expect(wrapper.find('.book__description__price')).text().to.eql('R$ 320,30');
+	});
+
+	it('Should simulate addBook onClick', () => {
+		wrapper.find('.add-button').simulate('click');
+		props.cartActions.addBook.should.have.callCount(1);
 	});
 });

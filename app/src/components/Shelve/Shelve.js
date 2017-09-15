@@ -1,11 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import currencyMask from '../../../core/helpers/masks/currencyMask';
 
 import Button from '../Button/Button';
-
-import * as cartActions from '../../container/actions/cartActions';
 
 import './shelve.scss';
 
@@ -50,15 +46,5 @@ const Shelve = (props:Props) => {
 	);
 };
 
-function mapStateToProps(state) {
-	return { ...state.cartReducer };
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		cartActions: bindActionCreators(cartActions, dispatch),
-	};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Shelve);
+export default Shelve;
 
